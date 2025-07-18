@@ -23,6 +23,43 @@ python main.py
 
 The API will be available at `http://localhost:9999`
 
+## Docker Deployment
+
+### Prerequisites
+
+Before running the application with Docker, you need to create the external network:
+
+```bash
+docker network create --driver bridge --subnet=192.168.18.0/24 n8n
+```
+
+### Running with Docker Compose
+
+1. Build and run the application:
+```bash
+docker-compose up --build
+```
+
+2. The API will be available at `http://localhost:9999`
+
+### Running with Docker
+
+Alternatively, you can build and run with Docker directly:
+
+```bash
+# Build the image
+docker build -t n8n-automation .
+
+# Run the container
+docker run -p 9999:9999 --network n8n n8n-automation
+```
+
+### Network Management
+
+- **List networks**: `docker network ls`
+- **Inspect network**: `docker network inspect n8n`
+- **Remove network**: `docker network rm n8n` (only when no containers are using it)
+
 ## API Endpoints
 
 ### GET /api/v1/whois

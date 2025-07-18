@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  n8n-automation:
+  n8n-helper:
     container_name: n8n_helper
     build: .
     ports:

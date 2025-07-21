@@ -9,6 +9,13 @@ A modular FastAPI application providing network-related tools like WHOIS lookup 
 - **Input Validation**: Validates domain format before processing
 - **Error Handling**: Comprehensive error responses
 
+## Intended use
+
+From inside of the n8n container you can leverage this helper container like this:
+- http://n8n_helper/api/v1/whois?domain=example.com
+
+*Note: n8n container needs to be connected to the same network as the n8n_helper is, so n8n_helper name resoution works.*
+
 ## Installation
 
 1. Install dependencies:
@@ -100,6 +107,7 @@ To add a new endpoint (e.g., DNS lookup):
 from routers import dns_router
 app.include_router(dns_router.router, prefix="/api/v1")
 ```
+4. Adjust the Dockerfile (install necessary packages, update healthy checks)
 
 ## Documentation
 
